@@ -5,11 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shape Up or Shape Out 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <form id="input-container">
+        <div class="rectangle-container">
+            <h2>Rectangle</h2>
+            <label for="rect-width">width: </label>
+            <input type="text" class="input" id="rect-width" placeholder="enter width">
+            <label for="rect-height" >height: </label>
+            <input type="text" class="input" id= "rect-height" placeholder="enter height">
+            <button type="submit" class="button" id="rect-button">Insert Rectangle</button>
+        </div>
+        <div class="square-container">
+            <h2>Square</h2>
+            <label for="square-length">side length: </label>
+            <input type="text" class="input" id="square-length" placeholder="enter side length">
+            <button type="submit" class="button" id="square-button" >Insert Square</button>
+        </div>
+        <div class="circle-container">
+                <h2>Circle</h2>
+                <label for="circle-radius">radius: </label>
+                <input type="text" class="input" id="circle-radius" placeholder="enter radius">
+                <button type="submit" class="button" id="circle-button" >Insert Circle</button>
+        </div>
+        <div class="triangle-container">
+                <h2>Isosceles Right Triangle</h2>
+                <label for="tri-height">height: </label>
+                <input type="text" class="input" id="tri-height" placeholder="enter height">
+                <button type="submit" class="button" id="triangle-button" >Insert Triangle</button>
+            </div>
+    </form>
+    <div id="results">
+    <div id="drawing-container">
+    </div>
+    <div id="sidepanel">
+        <h3>Click a shape to get its stats!</h3>
+        <ul id="side-list">
+            <li id="side-shape">Shape Name: </li>
+            <li id="side-width">Width: </li>
+            <li id="side-height">Height: </li>
+            <li id="side-radius">Radius: </li>
+            <li id="side-area">Area: </li>
+            <li id="side-perimeter">Perimeter: </li>
+        </ul>
+    </div>
+    </div>
     
-    
+
     <script src="script.js"></script>
 </body>
 </html>

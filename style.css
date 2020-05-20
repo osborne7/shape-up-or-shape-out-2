@@ -1,0 +1,72 @@
+.box {
+    height: 20em;
+    width: 20em;
+    background-color: black;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#results {
+    display: flex;
+}
+
+input, button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+button {
+    background-color: #6897bb;
+    font-size: .9em;
+    cursor: pointer;
+    /* border: 2px solid gray; */
+    border-radius: 1em;
+    color: #f5f5f5;
+    padding: .6em;
+}
+
+.circle {
+    background-color: #660066;
+    border-radius: 50%;
+}
+
+.square {
+    background-color: #990000;
+}
+
+.triangle {
+    background-color: #ffff66;
+    width: 0;
+    height: 0;
+    /* border-bottom: 100px solid red;
+    border-right: 100px solid transparent; */
+}
+
+.rectangle {
+    background-color: #d3ffce;
+}
+
+#drawing-container {
+    background-color: #f5f5f5;
+    height: 600px;
+    width: 600px;
+    margin: 2em;
+}
+
+#sidepanel {
+    margin: 2em 5em;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 3em;
+}
+
+li {
+    margin: 1em 0em;
+}
+
+.hide {
+    display: none;
+}
