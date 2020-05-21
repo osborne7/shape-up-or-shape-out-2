@@ -13,6 +13,9 @@ class Shape {
             e.preventDefault();
             this.div.classList.add('hide');
         })
+        this.div.addEventListener('click', () => {
+            this.describe();
+        })
     }
     describe = () => {
         //get all side-panel categories:
