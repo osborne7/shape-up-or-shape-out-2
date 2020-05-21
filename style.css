@@ -36,11 +36,17 @@ button {
 }
 
 .triangle {
-    background-color: #ffff66;
+    /* background-color: #ffff66; */
+    /* color: black; */
     width: 0;
     height: 0;
-    /* border-bottom: 100px solid red;
-    border-right: 100px solid transparent; */
+    border-right: 50px solid transparent;
+    border-bottom: 150px solid red;
+    /* border-bottom-style: solid;
+    border-bottom-right-radius: 0.125rem;
+    border-right-style: solid;
+    border-right-color: transparent;
+    border-top-left-radius: 0.125rem; */
 }
 
 .rectangle {
@@ -52,10 +58,15 @@ button {
     height: 600px;
     width: 600px;
     margin: 2em;
+    position: absolute;
+    display: block;
 }
 
 #sidepanel {
-    margin: 2em 5em;
+    /* margin: 2em 5em; */
+    position: relative;
+    margin-left: 42em;
+
 }
 
 ul {
@@ -69,4 +80,8 @@ li {
 
 .hide {
     display: none;
+}
+
+.shape {
+    position: absolute;
 }

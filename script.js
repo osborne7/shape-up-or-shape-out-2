@@ -1,5 +1,4 @@
 let drawingContainer = document.getElementById('drawing-container');
-console.log(drawingContainer);
 
 class Shape {
     constructor(width, height) {
@@ -9,56 +8,72 @@ class Shape {
         this.div.style.height = `${this.height}px`;
         this.div.style.width = `${this.width}px`;
         this.div.classList.add('shape');
-        //this will eventually move to the randomLocation method:
         drawingContainer.appendChild(this.div);
-        // this.randomLocation();
-        console.log(this);
-        // this.div.addEventListener('click', this.describe());
         this.div.addEventListener('dblclick', (e) => {
             e.preventDefault();
-            //this needs to be reworked
-            // let thisShape = this;
             this.div.classList.add('hide');
         })
     }
     describe = () => {
+        //get all side-panel categories:
+        let sideShape = document.getElementById('side-shape');
+        let sideWidth = document.getElementById('side-width');
+        let sideHeight = document.getElementById('side-height');
+        let radius = document.getElementById('side-radius');
+        let perimeter = document.getElementById('side-perimeter');
+        let area = document.getElementById('side-area');
+        sideShape.innerHTML = 'Shape Name: '
+        sideWidth.innerHTML = 'Width: '
+        sideHeight.innerHTML = 'Height: '
+        radius.innerHTML = 'Radius: '
+        perimeter.innerHTML = 'Perimeter: '
+        area.innerHTML = 'Area: '
+
         //shape name:
         let classes = this.div.classList;
         let getShapeName = classes[1];
-        console.log(`get shape name: ${getShapeName}`);
-        let sideShape = document.getElementById('side-shape');
-        // console.log(`shape name: ${getShapeName}`);
         let shapeText = document.createTextNode(getShapeName);
         sideShape.appendChild(shapeText);
 
         //width:
-        let sideWidth = document.getElementById('side-width');
         let widthText = document.createTextNode(`${this.width}px`);
         sideWidth.appendChild(widthText);
 
         //height:
-        let sideHeight = document.getElementById('side-height');
         let heightText = document.createTextNode(`${this.height}px`);
         sideHeight.appendChild(heightText);
 
-    }
-    // randomLocation = () => {
-    //     //add logic for placing in a random location within the drawing-container
-    // }
-        
-    }
+        if (this.div.classList.contains('circle')) {
+            let radiusText = document.createTextNode(`${this.width / 2}px`);
+            radius.appendChild(radiusText);
 
-    // new Shape(5, 10);
+            let perimeterText = document.createTextNode(`${Math.floor(2 * Math.PI * this.height)}px`);
+            perimeter.appendChild(perimeterText);
 
+            let areaText = document.createTextNode(`${Math.floor(Math.PI * (this.height * this.height))}px`);
+            area.appendChild(areaText);
+            } else if (this.div.classList.contains('triangle')) {
+                let areaText = document.createTextNode(`${Math.floor(0.5 * this.height * this.height)}px`);
+                area.appendChild(areaText);
+
+                let perimeterText = document.createTextNode(`${Math.floor(2 * (this.height * this.height) + Math.sqrt(2) * this.height)}px`);
+                perimeter.appendChild(perimeterText);
+            }
+    }
+    randomVal = (min, max) => {
+                return Math.floor(Math.random() * (max - min) + min);
+            }
+    }
 
 class Circle extends Shape {
     constructor(width, height) {
         super(width, height);
-        // this.radius = radius;
         this.div.style.height = `${this.height}px`;
         this.div.style.width = `${this.width}px`;
         this.div.classList.add('circle');
         this.div.addEventListener('click', this.describe());
+        this.div.style.top = `${this.randomVal(this.height, 600)}px`;
+        this.div.style.left = `${this.randomVal(this.width, 600)}px`;        
     }
 }
 
@@ -67,22 +82,14 @@ class Triangle extends Shape {
         super(width, height);
         this.height = height;
         this.width = width;
-        this.div.style.borderBottom = `${this.width}px solid red`;
-        this.div.style.borderRight = `${this.height}px solid transparent`;
+        // note to self: triangle drawing needs to be re-worked:
+        this.div.style.borderBottomWidth = `${this.height}px`;
+        this.div.style.borderRightWidth = `${this.height}px`;
         this.div.classList.add('triangle');
         this.div.addEventListener('click', this.describe());
-
-
-        // this.div.style.borderLeft = `${this.height}px solid transparent`;
-        
-            /* border-bottom: 100px solid red;
-    border-right: 100px solid transparent; */
-        // this.base = height;
-    //     this.area = this.triArea();
-    //     this.perimeter = this.triPerimeter();
+        this.div.style.top = `${this.randomVal(this.height, 600)}px`;
+        this.div.style.left = `${this.randomVal(this.width, 600)}px`;
     }
-    // triArea = () => 0.5 * this.base * this.height;
-    // triPerimeter = () => 2 * this.height + (Math.sqrt(2)) * height;
 }
 
 class Rectangle extends Shape {
@@ -92,8 +99,8 @@ class Rectangle extends Shape {
         this.div.style.width = `${this.width}px`;
         this.div.classList.add('rectangle');
         this.div.addEventListener('click', this.describe());
-
-        //need to use the width and height to draw the rect
+        this.div.style.top = `${this.randomVal(this.height, 600)}px`;
+        this.div.style.left = `${this.randomVal(this.width, 600)}px`;
     }
 }
 
@@ -102,16 +109,12 @@ class Square extends Shape {
         super(width, height);
         this.div.classList.add('square');
         this.div.addEventListener('click', this.describe());
-
-        // this.sideLength = sideLength;
+        this.div.style.top = `${this.randomVal(this.height, 600)}px`;
+        this.div.style.left = `${this.randomVal(this.width, 600)}px`;
     }
 }
 
-// new Square(5, 10);
-
-
-// when any of these are clicked, first remove the values from the sidepanel
-//add shapes when their buttons are clicked:
+//add shapes when their submit buttons are clicked:
 let rectangleButton = document.getElementById('rect-button');
 rectangleButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -125,12 +128,8 @@ rectangleButton.addEventListener('click', (e) => {
 let squareButton = document.getElementById('square-button');
 squareButton.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('square button was clicked');
     let userLength = document.getElementById('square-length');
-    console.log(userLength);
     let squareLength = userLength.value;
-    console.log('square length: ' + squareLength);
-
     new Square(squareLength, squareLength);
 })
 
@@ -147,6 +146,5 @@ triangleButton.addEventListener('click', (e) => {
     e.preventDefault();
     let userTriHeight = document.getElementById('tri-height');
     let triHeight = userTriHeight.value;
-    console.log(triHeight);
     new Triangle(triHeight, triHeight);
 })
